@@ -18,11 +18,18 @@ How to use
 
 From a terminal, type the following:
 
-python3 rgb2yiq inputimgfile.ext
+python3 rgb2yiq.py [-h] [-q] [-v] [-l] infile [outfile]
+
+- Option -h displays a help message.
+- Option -q prevents messages from appearing (only outputs errors).
+- Option -v prints version number.
+- Option -l shows license information.
+- Mandatory argument `infile' is the input filename
+- Optional argument `outfile' is the output file (ommitting it sends output to stdout).
 
 It currently supports any image type supported by Pillow.
 
-The program generates a file as output, named `inputimgfile.ext.yiq', with the structure described below.
+When the program generates a file as output, it is named `outfile.yiq', with the structure described below. The structure is used as well when outputting to stdout.
 
 File structure
 ==============
@@ -41,9 +48,8 @@ Finally, in sequential order, triplets of (Y, I, Q) values are stored for each p
 To Do
 =====
 
-1. Implement parameter-checks and a better parameter management system.
-2. Generate output file to standard output for more flexibility.
-3. Implement reverse-direction YIQ -> image file.
+1. Implement reverse-direction YIQ -> image file.
+2. Allow native compression to generated files (requires changes in file structure). This issue can be partially addressed by sending to stdout and piping to any compression utility like `gzip'.
 
 License
 =======
